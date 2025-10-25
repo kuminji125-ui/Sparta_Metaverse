@@ -5,7 +5,7 @@ using UnityEngine;
 public class DepthSorting : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
-    public int baseSortingOffset = 2000; // 기본 order값
+    public int baseSortingOffset = 3000; // 기본 order값
 
     private void Awake()
     {

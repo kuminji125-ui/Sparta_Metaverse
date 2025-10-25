@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     private Vector3 targetPosition;
     Animator anim;
     Rigidbody2D rigid;
-
+    GameObject scanObject;
     Vector3 dirVec;
     private void Awake()
     {
@@ -110,6 +110,11 @@ public class Player : MonoBehaviour
                 dirVec = Vector3.down;
             }
         }
+        //scanObject
+        if (Input.GetButtonDown("Jump")&& scanObject != null)//spacebar
+        {
+            Debug.Log("this object is "+scanObject.gameObject.name);
+        }
     }
 
     private void FixedUpdate()
@@ -133,6 +138,14 @@ public class Player : MonoBehaviour
             rigid.velocity = new Vector2(h * moveSpeed, v * moveSpeed);
         }
         Debug.DrawRay(rigid.position, dirVec *0.7f, new Color(0, 1, 0));
-        //RaycastHid2D rayHit = Physics2D.Raycast(rigid.position, dirVec,0.7f,)
+        RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, dirVec, 0.7f, LayerMask.GetMask("Object"));
+        if(rayHit.collider != null)
+        {
+            scanObject = rayHit.collider.gameObject;
+        }
+        else
+        {
+            scanObject = null;
+        }
     }
 }
