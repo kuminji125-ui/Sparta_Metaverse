@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     Animator anim;
     Rigidbody2D rigid;
 
+    Vector3 dirVec;
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -22,7 +23,12 @@ public class Player : MonoBehaviour
     {
         h = Input.GetAxisRaw("Horizontal");
         v = Input.GetAxisRaw("Vertical");
-        if (Input.GetMouseButtonDown(0))
+
+        bool hDown = Input.GetButtonDown("Horizontal");
+        bool vDown = Input.GetButtonDown("Vertical");
+        bool hUp = Input.GetButtonUp("Horizontal");
+        bool vUp = Input.GetButtonUp("Vertical");
+        if (Input.GetMouseButtonDown(0)) //마우스 클릭 이동
         {
             targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             targetPosition.z = transform.position.z;
@@ -44,6 +50,7 @@ public class Player : MonoBehaviour
             if(directionToTarget.magnitude < 0.1f)
             {
                 isMovingToMouse = false;
+                rigid.velocity = Vector2.zero;
             }
             else
             {
@@ -60,46 +67,47 @@ public class Player : MonoBehaviour
             if (absH > absV) { animH = (int)Mathf.Sign(currentInput.x); }
             else if (absV > 0) { animV = (int)Mathf.Sign(currentInput.y); }
         }
-        bool hChange = anim.GetInteger("hAxisRaw") != animH;
-        bool vChange = anim.GetInteger("vAxisRaw") != animV;
-        if (isMoving)
+        bool directionChanging = anim.GetInteger("hAxisRaw") != animH || anim.GetInteger("vAxisRaw") != animV;
+        if (directionChanging)
         {
-            if (hChange || vChange)
-            {
-                anim.SetBool("isChange", true);
-            }
-            else
-            {
-                anim.SetBool("isChange", false);
-            }
+            anim.SetBool("isChange", true);
             anim.SetInteger("hAxisRaw", animH);
-            anim.SetInteger("vAxisRaw", animV);
+            anim.SetInteger("vAxisRaw",animV);
         }
         else
         {
-            if (anim.GetInteger("hAxisRaw") != 0 || anim.GetInteger("vAxisRaw") != 0)
+            anim.SetBool("isChange", false);
+        }
+        if (isMovingToMouse)
+        {
+            float absH = Mathf.Abs(currentInput.x);
+            float absV = Mathf.Abs(currentInput.y);
+            if(absH > absV)
             {
-                anim.SetBool("isChange", true);
-                anim.SetInteger("hAxisRaw", animH);
-                anim.SetInteger("vAxisRaw", animV);
+                dirVec = currentInput.x > 0 ? Vector3.right : Vector3.left;
             }
             else
             {
-                anim.SetBool("isChange", false);
+                dirVec = currentInput.y > 0 ? Vector3.up : Vector3.down;
             }
-            if (anim.GetInteger("hAxisRaw") != (int)h)
+        }
+        else
+        {
+            if (hDown && h == 1)
             {
-                anim.SetBool("isChange", true);
-                anim.SetInteger("hAxisRaw", (int)h);
+                dirVec = Vector3.right;
             }
-            else if (anim.GetInteger("vAxisRaw") != (int)v)
+            else if (hDown && h == -1)
             {
-                anim.SetBool("isChange", true);
-                anim.SetInteger("vAxisRaw", (int)v);
+                dirVec = Vector3.left;
             }
-            else
+            else if (vDown && v == 1)
             {
-                anim.SetBool("isChange", false);
+                dirVec = Vector3.up;
+            }
+            else if (vDown && v == -1)
+            {
+                dirVec = Vector3.down;
             }
         }
     }
@@ -123,6 +131,8 @@ public class Player : MonoBehaviour
         else
         {
             rigid.velocity = new Vector2(h * moveSpeed, v * moveSpeed);
-        }     
+        }
+        Debug.DrawRay(rigid.position, dirVec *0.7f, new Color(0, 1, 0));
+        //RaycastHid2D rayHit = Physics2D.Raycast(rigid.position, dirVec,0.7f,)
     }
 }
