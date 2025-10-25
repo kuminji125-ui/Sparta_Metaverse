@@ -12,8 +12,9 @@ public class Player : MonoBehaviour
     private Vector3 targetPosition;
     Animator anim;
     Rigidbody2D rigid;
-    GameObject scanObject;
+    public GameObject scanObject;
     Vector3 dirVec;
+    public GameManager manager;
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -21,13 +22,13 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
-        h = Input.GetAxisRaw("Horizontal");
-        v = Input.GetAxisRaw("Vertical");
+        h = manager.isAction ? 0: Input.GetAxisRaw("Horizontal");
+        v = manager.isAction ? 0: Input.GetAxisRaw("Vertical");
 
-        bool hDown = Input.GetButtonDown("Horizontal");
-        bool vDown = Input.GetButtonDown("Vertical");
-        bool hUp = Input.GetButtonUp("Horizontal");
-        bool vUp = Input.GetButtonUp("Vertical");
+        bool hDown = manager.isAction ? false : Input.GetButtonDown("Horizontal");
+        bool vDown = manager.isAction ? false : Input.GetButtonDown("Vertical");
+        bool hUp = manager.isAction ? false : Input.GetButtonUp("Horizontal");
+        bool vUp = manager.isAction ? false : Input.GetButtonUp("Vertical");
         if (Input.GetMouseButtonDown(0)) //마우스 클릭 이동
         {
             targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -113,7 +114,7 @@ public class Player : MonoBehaviour
         //scanObject
         if (Input.GetButtonDown("Jump")&& scanObject != null)//spacebar
         {
-            Debug.Log("this object is "+scanObject.gameObject.name);
+            manager.Action(scanObject);
         }
     }
 
