@@ -10,7 +10,7 @@ public class FollowCamera : MonoBehaviour
 
     public void Start()
     {
-        if(target == null)
+        if (target == null)
         {
             return;
         }
