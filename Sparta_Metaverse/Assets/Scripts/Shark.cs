@@ -11,7 +11,6 @@ public class Shark : MonoBehaviour
     public float flapForce = 6f;
     public float forwardSpeed = 3f;
     public bool isDead = false;
-    float deathCooldown = 0f;
 
     bool isFlap = false;
 
@@ -38,7 +37,7 @@ public class Shark : MonoBehaviour
     {
         if (isDead)
         {
-            if (deathCooldown <= 0)
+            /*if (deathCooldown <= 0)
             {
                 if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
                 {
@@ -48,7 +47,7 @@ public class Shark : MonoBehaviour
             else
             {
                 deathCooldown -= Time.deltaTime;
-            }
+            }*/
         }
         else
         {
@@ -83,7 +82,6 @@ public class Shark : MonoBehaviour
         if (isDead) return;
 
         isDead = true;
-        deathCooldown = 1f;
         animator.SetInteger("isDie", 1);
         gameManager.GameOver();
     }

@@ -32,14 +32,11 @@ public class GameManager_2 : MonoBehaviour
             bestScore = currentScore;
             PlayerPrefs.SetInt(BestScoreKey, bestScore);
         }
+        uiManager.SetScore(currentScore, bestScore);
         Debug.Log("게임오버");
-        uiManager.SetRestart();
+        uiManager.InvokeSetRestart();
     }
 
-    public void RestartGame()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
     public void AddScore(int score)
     {
         currentScore += score;
