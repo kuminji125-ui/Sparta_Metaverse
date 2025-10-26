@@ -17,9 +17,10 @@ public class TalkManager : MonoBehaviour
     void GenerateData()
     {
         talkData.Add(1000, new string[] { "안녕?:0", "이 곳에 처음 왔구나?:1" });
+        talkData.Add(2000, new string[] { "안녕?:0", "여기 있는 돌을 만지면 수영 게임을 할 수 있어:1","신기록을 세우면 기록이 되니 한번 해봐.:2" });
         talkData.Add(100, new string[] { "평범한 나무상자다." });
         talkData.Add(200, new string[] { "누군가 사용한 흔적이 있는 책상이다." });
-        talkData.Add(2000, new string[] { "뭐야?:0", "왜 말걸어?:2" });
+        
 
         portraitData.Add(1000 + 0, portraitArr[0]);
         portraitData.Add(1000 + 1, portraitArr[1]);

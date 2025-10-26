@@ -12,12 +12,16 @@ public class GameManager : MonoBehaviour
     public TalkManager talkManager;
     public int talkIndex;
     public Image portraitImg;
-
     public void Action(GameObject scanObj)
     {
         isAction = true;
         scanObject = scanObj;
         ObjectData objData = scanObj.GetComponent<ObjectData>();
+        if (objData.id == 300)
+        {
+            LoadSwimGame.LoadGame();
+            return;
+        }
         Talk(objData.id, objData.isNpc);
         talkPanel.SetActive(isAction);
         
