@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
     public TalkManager talkManager;
     public int talkIndex;
     public Image portraitImg;
+    public Image panel;
+    public TextMeshProUGUI bestScoreTXT;
     public void Action(GameObject scanObj)
     {
         isAction = true;
@@ -20,6 +23,12 @@ public class GameManager : MonoBehaviour
         if (objData.id == 300)
         {
             LoadSwimGame.LoadGame();
+            return;
+        }
+        if(objData.id == 200)
+        {
+            bestScoreTXT.text = PlayerPrefs.GetInt("BestScore").ToString();
+            panel.gameObject.SetActive(true);
             return;
         }
         Talk(objData.id, objData.isNpc);
