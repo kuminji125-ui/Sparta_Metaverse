@@ -29,11 +29,16 @@ public class Player : MonoBehaviour
         bool vDown = manager.isAction ? false : Input.GetButtonDown("Vertical");
         bool hUp = manager.isAction ? false : Input.GetButtonUp("Horizontal");
         bool vUp = manager.isAction ? false : Input.GetButtonUp("Vertical");
-        if (Input.GetMouseButtonDown(0)) //마우스 클릭 이동
+        if (!manager.isAction&&Input.GetMouseButtonDown(0)) //마우스 클릭 이동
         {
             targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             targetPosition.z = transform.position.z;
             isMovingToMouse = true;
+        }
+        if(manager.isAction && isMovingToMouse)
+        {
+            isMovingToMouse = false;
+            rigid.velocity = Vector2.zero;
         }
         if(h!=0 || v != 0)
         {
