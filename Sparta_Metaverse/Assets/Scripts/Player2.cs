@@ -37,6 +37,7 @@ public class Player2 : MonoBehaviour
     }
     private void Start()
     {
+        //PlayerPrefs.SetString(Pet_Key, "None"); //∆Í ªË¡¶
         LoadPet();
     }
     private void LoadPet()

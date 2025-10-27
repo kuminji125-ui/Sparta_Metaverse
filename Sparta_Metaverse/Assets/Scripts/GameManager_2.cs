@@ -21,6 +21,7 @@ public class GameManager_2 : MonoBehaviour
     }
     public void Start()
     {
+        //PlayerPrefs.SetInt(BestScoreKey, 0); //최고점수 삭제
         bestScore = PlayerPrefs.GetInt(BestScoreKey, 0);
         uiManager.UpdateScore(0);
     }
