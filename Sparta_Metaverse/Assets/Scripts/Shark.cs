@@ -7,7 +7,8 @@ public class Shark : MonoBehaviour
     GameManager_2 gameManager;
     Animator animator;
     Rigidbody2D _rigidbody;
-
+    AudioSource audioSource;
+    public AudioClip clip;
     public float flapForce = 6f;
     public float forwardSpeed = 3f;
     public bool isDead = false;
@@ -18,6 +19,7 @@ public class Shark : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         gameManager = GameManager_2.Instance;
         animator = GetComponentInChildren<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -53,6 +55,7 @@ public class Shark : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
             {
+                audioSource.PlayOneShot(clip);
                 isFlap = true;
             }
         }
