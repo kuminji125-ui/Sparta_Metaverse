@@ -122,7 +122,6 @@ public class Player : MonoBehaviour
             manager.Action(scanObject);
         }
     }
-
     private void FixedUpdate()
     {
         if (isMovingToMouse)

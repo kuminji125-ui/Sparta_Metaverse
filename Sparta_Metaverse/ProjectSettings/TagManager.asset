@@ -7,6 +7,7 @@ TagManager:
   - BackGround
   - Turnel
   - Main
+  - Shop
   layers:
   - Default
   - TransparentFX

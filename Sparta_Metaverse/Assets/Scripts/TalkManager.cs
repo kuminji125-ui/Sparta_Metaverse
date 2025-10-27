@@ -25,6 +25,7 @@ public class TalkManager : MonoBehaviour
         talkData.Add(500, new string[] { "초록색 집이다. 들어갈 수 없다." });
         talkData.Add(3000, new string[] { "이 동굴은 갑자기 빨려들어가서 너무 무서워.:0" });
         talkData.Add(4000, new string[] { "이 구멍에서 코인으로 무언가 바꿔준대:0", "근데 코인이 뭐지?:0" });
+        talkData.Add(600, new string[] { "물건을 구입할 수 있는 상점이다." });
         portraitData.Add(1000 + 0, portraitArr[0]);
         portraitData.Add(1000 + 1, portraitArr[1]);
         portraitData.Add(1000 + 2, portraitArr[2]);

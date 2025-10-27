@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public Image panel;
     public TextMeshProUGUI bestScoreTXT;
     public Image gameGuide;
+    public Image shopImg;
     public void Action(GameObject scanObj)
     {
         isAction = true;
@@ -30,6 +31,11 @@ public class GameManager : MonoBehaviour
         {
             bestScoreTXT.text = PlayerPrefs.GetInt("BestScore").ToString();
             panel.gameObject.SetActive(true);
+            return;
+        }
+        if(objData.id == 600)
+        {
+            shopImg.gameObject.SetActive(true);
             return;
         }
         Talk(objData.id, objData.isNpc);
