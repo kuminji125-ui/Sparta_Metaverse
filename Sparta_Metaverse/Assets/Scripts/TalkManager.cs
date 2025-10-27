@@ -24,7 +24,7 @@ public class TalkManager : MonoBehaviour
         talkData.Add(400, new string[] { "빨간색 집이다. 들어갈 수 없다." });
         talkData.Add(500, new string[] { "초록색 집이다. 들어갈 수 없다." });
         talkData.Add(3000, new string[] { "이 동굴은 갑자기 빨려들어가서 너무 무서워.:0" });
-
+        talkData.Add(4000, new string[] { "이 구멍에서 코인으로 무언가 바꿔준대:0", "근데 코인이 뭐지?:0" });
         portraitData.Add(1000 + 0, portraitArr[0]);
         portraitData.Add(1000 + 1, portraitArr[1]);
         portraitData.Add(1000 + 2, portraitArr[2]);
@@ -34,6 +34,7 @@ public class TalkManager : MonoBehaviour
         portraitData.Add(2000 + 2, portraitArr[6]);
         portraitData.Add(2000 + 3, portraitArr[7]);
         portraitData.Add(3000 + 0, portraitArr[8]);
+        portraitData.Add(4000 + 0, portraitArr[9]);
     }
     public string GetTalk(int id, int talkIndex)
     {

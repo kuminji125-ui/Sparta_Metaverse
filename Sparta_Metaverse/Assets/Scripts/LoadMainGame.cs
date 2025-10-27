@@ -8,4 +8,11 @@ public class LoadMainGame : MonoBehaviour
     {
         SceneManager.LoadScene("SampleScene");
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Main"))
+        {
+            LoadMain();
+        }
+    }
 }
