@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SwimGame.unity
     guid: 489bc0ce26e0b854bb19add1b5b7a7d1
+  - enabled: 1
+    path: Assets/Scenes/Turnel.unity
+    guid: c45c39f0ceea89542917c6d7d214557f
   m_configObjects: {}
