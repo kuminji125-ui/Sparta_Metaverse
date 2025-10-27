@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public Image portraitImg;
     public Image panel;
     public TextMeshProUGUI bestScoreTXT;
+    public Image gameGuide;
     public void Action(GameObject scanObj)
     {
         isAction = true;
@@ -22,7 +23,7 @@ public class GameManager : MonoBehaviour
         ObjectData objData = scanObj.GetComponent<ObjectData>();
         if (objData.id == 300)
         {
-            LoadSwimGame.LoadGame();
+            gameGuide.gameObject.SetActive(true);
             return;
         }
         if(objData.id == 200)
