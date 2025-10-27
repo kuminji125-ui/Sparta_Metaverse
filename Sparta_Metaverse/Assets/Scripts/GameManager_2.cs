@@ -31,6 +31,8 @@ public class GameManager_2 : MonoBehaviour
             Debug.Log($"최고 기록 갱신: {currentScore}");
             bestScore = currentScore;
             PlayerPrefs.SetInt(BestScoreKey, bestScore);
+            int coins = PlayerPrefs.GetInt("Coins");
+            PlayerPrefs.SetInt("Coins", coins + 5);
         }
         uiManager.SetScore(currentScore, bestScore);
         Debug.Log("게임오버");

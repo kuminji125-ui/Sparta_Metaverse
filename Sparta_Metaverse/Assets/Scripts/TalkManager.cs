@@ -17,7 +17,7 @@ public class TalkManager : MonoBehaviour
     void GenerateData()
     {
         talkData.Add(1000, new string[] { "안녕?:0", "메타버스 마을에 처음 왔구나?:1","주변을 둘러보면서 구경해봐:2","참고로 오른쪽 게시판엔 게임 최고 점수가 기록되어 있어.:1" });
-        talkData.Add(2000, new string[] { "안녕?:0", "여기 있는 돌을 만지면 수영 게임을 할 수 있어:1","신기록을 세우면 기록이 되니 한번 해봐.:2" });
+        talkData.Add(2000, new string[] { "안녕?:0", "여기 있는 돌을 만지면 수영 게임을 할 수 있어:1","신기록을 세우면 코인을 얻을 수 있으니 한번 해봐.:2" });
         talkData.Add(100, new string[] { "평범한 나무상자다." });
         talkData.Add(200, new string[] { "기록이 적혀있는 게시판이다." });
         talkData.Add(300, new string[] { "게임을 할 수 있는 돌이다." });
